@@ -8,7 +8,7 @@ function Homescreen() {
   const [showSearchField, toggleSearchField] = useState(false);
   const [locations, showLocations ] = useState([1,2,3,4,5,6,7])
 
-
+  const API_KEY = 'afbef231da4ffcffc51bcfe0ddab6477'
   return (
     <View style={{ flex: 1 }}>
       <StatusBar style='light' />
