@@ -9,6 +9,10 @@ function Homescreen() {
   const [locations, showLocations ] = useState([1,2,3,4,5,6,7])
 
   const API_KEY = 'afbef231da4ffcffc51bcfe0ddab6477'
+  //fetchweatherdata
+  const fetchWeatherData = async (location) => {
+    const url = `https://api.openweathermap.org/data/2.5/weather?q=<span class="math-inline">\{location\}&appid\=</span>{API_KEY}`
+  }
   return (
     <View style={{ flex: 1 }}>
       <StatusBar style='light' />
@@ -85,11 +89,11 @@ function Homescreen() {
               <Text style={{ marginVertical: 10, fontSize: 16, fontWeight: 'bold'}}>Daily Forecast</Text>
             </View>
             <ScrollView horizontal contentContainerStyle={{ marginVertical: 10}} showsHorizontalScrollIndicator={false} >
-              <View style={{ justifyContent: 'center', alignItems: 'center',backgroundColor: 'lightgray', padding: 10, marginEnd: 10, borderRadius: 15}}>
+              <TouchableOpacity style={{ justifyContent: 'center', alignItems: 'center',backgroundColor: 'lightgray', padding: 10, marginEnd: 10, borderRadius: 15}}>
                 <Image source={require('../assets/images/heavyrain.png')} style={{ width: 30, height: 30}} />
                 <Text style={{ fontWeight: '500'}}>Monday</Text>
                 <Text style={{ fontWeight: '500'}}>23&#176;</Text>
-              </View>
+              </TouchableOpacity>
               <View style={{ justifyContent: 'center', alignItems: 'center', backgroundColor: 'lightgray', padding: 10, marginEnd: 10, borderRadius: 15}}>
                 <Image source={require('../assets/images/heavyrain.png')} style={{ width: 30, height: 30}} />
                 <Text style={{ fontWeight: '500'}}>Monday</Text>
