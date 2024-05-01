@@ -46,8 +46,8 @@ function Homescreen() {
           {/* Weather forecast  */}
           <View style={{ margin: 20, justifyContent: 'space-around'}}>
             <Text style={{ fontWeight: 'bold'}}>
-              London
-              <Text style={{ fontWeight: '100'}}>United Kingdon</Text>
+              London, 
+              <Text style={{ fontWeight: '400'}}> United Kingdon</Text>
             </Text>
 
             <View style={{ flexDirection: 'row', justifyContent: 'center'}}>
@@ -60,20 +60,22 @@ function Homescreen() {
             </View>
             {/* other weather stats */}
             <View style={{ flexDirection: 'row', justifyContent: 'space-between'}}>
+
               <View style={{ flexDirection: 'row', alignItems: 'center', marginEnd: 10}}>
-                <Image source={require('../assets/images/wind.png')} width={6} height={6}/>
+                <Image source={require('../assets/images/wind.png')} style={{ width: 6, height: 6 }}/>
                 <Text>22km</Text>
               </View>
 
               <View style={{ flexDirection: 'row', alignItems: 'center', marginEnd: 10}}>
-                <Image source={require('../assets/images/wind.png')} width={6} height={6}/>
+                <Image source={require('../assets/images/wind.png')} style={{ width: 6, height: 6 }}/>
                 <Text>22km</Text>
               </View>
 
               <View style={{ flexDirection: 'row', alignItems: 'center', marginEnd: 10}}>
-                <Image source={require('../assets/images/wind.png')} width={6} height={6}/>
+                <Image source={require('../assets/images/wind.png')} style={{ width: 6, height: 6 }}/>
                 <Text>22km</Text>
               </View>
+
             </View>
 
           </View>
