@@ -51,15 +51,15 @@ function Homescreen() {
             </Text>
 
             <View style={{ flexDirection: 'row', justifyContent: 'center', paddingVertical: 20}}>
-              <Image source={require('../assets/images/sunwind.png')} style={{ width: 150, height: 150 }}/>
+              <Image source={require('../assets/images/sunwind.png')} style={{ width: 155, height: 155 }}/>
             </View>
 
-            <View style={{ marginBottom: 10}}>
+            <View style={{ marginBottom: 20}}>
               <Text style={{ textAlign: 'center', fontWeight: 'bold', fontSize: 36, marginBottom: 10}}>23&#176;</Text>
-              <Text style={{ textAlign: 'center', fontWeight: 'bold', fontSize: 24}}>Partly Cloudy</Text>
+              <Text style={{ textAlign: 'center', fontWeight: 'bold', fontSize: 18}}>Partly Cloudy</Text>
             </View>
             {/* other weather stats */}
-            <View style={{ flexDirection: 'row', justifyContent: 'space-between'}}>
+            <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginHorizontal: 20}}>
 
               <View style={{ flexDirection: 'row', alignItems: 'center', marginHorizontal: 10, marginVertical: 0}}>
                 <Image source={require('../assets/images/wind.png')} style={{ width: 24, height: 24 }}/>
@@ -67,12 +67,12 @@ function Homescreen() {
               </View>
 
               <View style={{ flexDirection: 'row', alignItems: 'center', marginEnd: 10}}>
-                <Image source={require('../assets/images/wind.png')} style={{ width: 24, height: 24 }}/>
+                <Image source={require('../assets/images/water.png')} style={{ width: 24, height: 24 }}/>
                 <Text style={{ fontSize: 16, fontWeight: 'bold'}}>23%</Text>
               </View>
 
               <View style={{ flexDirection: 'row', alignItems: 'center', marginEnd: 10}}>
-                <Image source={require('../assets/images/wind.png')} style={{ width: 24, height: 24 }}/>
+                <Image source={require('../assets/images/sun.png')} style={{ width: 24, height: 24 }}/>
                 <Text style={{ fontSize: 16, fontWeight: 'bold'}}>6:05 AM</Text>
               </View>
 
@@ -82,35 +82,35 @@ function Homescreen() {
           <View style={{ margin: 20}}>
             <View style={{ flexDirection: 'row', alignItems: 'center'}}>
               <CalendarDaysIcon size={20} style={{ color:'black'}}/>
-              <Text style={{ marginVertical: 10}}>Daily Forecast</Text>
+              <Text style={{ marginVertical: 10, fontSize: 16, fontWeight: 'bold'}}>Daily Forecast</Text>
             </View>
-            <ScrollView horizontal contentContainerStyle={{ paddingHorizontal: 15, marginVertical: 10}} showsHorizontalScrollIndicator={false} >
-              <View style={{ justifyContent: 'center', alignItems: 'center',backgroundColor: 'lightgray', padding: 10, marginEnd: 10, borderRadius: 12}}>
+            <ScrollView horizontal contentContainerStyle={{ marginVertical: 10}} showsHorizontalScrollIndicator={false} >
+              <View style={{ justifyContent: 'center', alignItems: 'center',backgroundColor: 'lightgray', padding: 10, marginEnd: 10, borderRadius: 15}}>
                 <Image source={require('../assets/images/heavyrain.png')} style={{ width: 30, height: 30}} />
                 <Text style={{ fontWeight: '500'}}>Monday</Text>
                 <Text style={{ fontWeight: '500'}}>23&#176;</Text>
               </View>
-              <View style={{ justifyContent: 'center', alignItems: 'center', backgroundColor: 'lightgray', padding: 10, marginEnd: 10, borderRadius: 12}}>
+              <View style={{ justifyContent: 'center', alignItems: 'center', backgroundColor: 'lightgray', padding: 10, marginEnd: 10, borderRadius: 15}}>
                 <Image source={require('../assets/images/heavyrain.png')} style={{ width: 30, height: 30}} />
                 <Text style={{ fontWeight: '500'}}>Monday</Text>
                 <Text style={{ fontWeight: '500'}}>23&#176;</Text>
               </View>
-              <View style={{ justifyContent: 'center', alignItems: 'center', backgroundColor: 'lightgray', padding: 10, marginEnd: 10, borderRadius: 12}}>
+              <View style={{ justifyContent: 'center', alignItems: 'center', backgroundColor: 'lightgray', padding: 10, marginEnd: 10, borderRadius: 15}}>
                 <Image source={require('../assets/images/heavyrain.png')} style={{ width: 30, height: 30}} />
                 <Text style={{ fontWeight: '500'}}>Monday</Text>
                 <Text style={{ fontWeight: '500'}}>23&#176;</Text>
               </View>
-              <View style={{ justifyContent: 'center', alignItems: 'center',backgroundColor: 'lightgray', padding: 10, marginEnd: 10, borderRadius: 12}}>
+              <View style={{ justifyContent: 'center', alignItems: 'center',backgroundColor: 'lightgray', padding: 10, marginEnd: 10, borderRadius: 15}}>
                 <Image source={require('../assets/images/heavyrain.png')} style={{ width: 30, height: 30}} />
                 <Text style={{ fontWeight: '500'}}>Monday</Text>
                 <Text style={{ fontWeight: '500'}}>23&#176;</Text>
               </View>
-              <View style={{ justifyContent: 'center', alignItems: 'center', backgroundColor: 'lightgray', padding: 10, marginEnd: 10, borderRadius: 12}}>
+              <View style={{ justifyContent: 'center', alignItems: 'center', backgroundColor: 'lightgray', padding: 10, marginEnd: 10, borderRadius: 15}}>
                 <Image source={require('../assets/images/heavyrain.png')} style={{ width: 30, height: 30}} />
                 <Text style={{ fontWeight: '500'}}>Monday</Text>
                 <Text style={{ fontWeight: '500'}}>23&#176;</Text>
               </View>
-              <View style={{ justifyContent: 'center', alignItems: 'center', backgroundColor: 'lightgray', padding: 10, borderRadius: 12}}>
+              <View style={{ justifyContent: 'center', alignItems: 'center', backgroundColor: 'lightgray', padding: 10, borderRadius: 15}}>
                 <Image source={require('../assets/images/heavyrain.png')} style={{ width: 30, height: 30}} />
                 <Text style={{ fontWeight: '500'}}>Monday</Text>
                 <Text style={{ fontWeight: '500'}}>23&#176;</Text>
