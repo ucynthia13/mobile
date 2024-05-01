@@ -3,6 +3,7 @@ import { SafeAreaView, StatusBar, TextInput, Text, TouchableOpacity, View, Image
 import { theme } from '../assets/theme/index';
 import { MagnifyingGlassIcon} from 'react-native-heroicons/outline'
 import { CalendarDaysIcon, MapIcon } from 'react-native-heroicons/solid'
+// import fetch from 'node'
 
 function Homescreen() {
   const [showSearchField, toggleSearchField] = useState(false);
@@ -12,6 +13,7 @@ function Homescreen() {
   //fetchweatherdata
   const fetchWeatherData = async (location) => {
     const url = `https://api.openweathermap.org/data/2.5/weather?q=<span class="math-inline">\{location\}&appid\=</span>{API_KEY}`
+
   }
   return (
     <View style={{ flex: 1 }}>
