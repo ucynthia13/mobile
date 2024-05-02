@@ -46,6 +46,7 @@ function Homescreen() {
               <TextInput
                 placeholder='Search City'
                 placeholderTextColor='black'
+                value={searchQuery}
                 style={{ flex: 1, color: 'black', paddingHorizontal: 10 }}
               />
               )}
