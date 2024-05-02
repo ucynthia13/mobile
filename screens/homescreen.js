@@ -16,7 +16,7 @@ function Homescreen() {
 
   //fetchweatherdata
   const fetchWeatherData = async (location) => {
-    try{
+    try{ 
       const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${location}&&appid=${API_KEY}`)
       const data = await response.json()
       setWeatherData(data)
