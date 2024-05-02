@@ -8,7 +8,7 @@ import { CalendarDaysIcon, MapIcon } from 'react-native-heroicons/solid'
 function Homescreen() {
   const [showSearchField, toggleSearchField] = useState(false);
   const [searchQuery, setSearchQuery] = useState('')
-  const [locations, setLocations ] = useState([1])
+  const [locations, setLocations ] = useState([])
   const [weatherData, setWeatherData] = useState(null)
   const [dailyForecact, setDailyForecast] = useState([])
 
@@ -36,6 +36,11 @@ function Homescreen() {
     })
     setLocations(filteredLocations)
   }
+
+  //function to handle location select
+  const handleLocationSelect =(location)=> {
+    fetchWeatherData(location.name)
+  }
   return (
     <View style={{ flex: 1 }}>
       <StatusBar style='light' />
@@ -47,6 +52,7 @@ function Homescreen() {
                 placeholder='Search City'
                 placeholderTextColor='black'
                 value={searchQuery}
+                onChangeText={handleSearch}
                 style={{ flex: 1, color: 'black', paddingHorizontal: 10 }}
               />
               )}
@@ -60,12 +66,12 @@ function Homescreen() {
         {
           showSearchField && (
             <View style={{ backgroundColor: 'lightgray', borderRadius: 25, marginHorizontal: 20}}>
-            {locations.map((location, index) => {
+            {locations.map((location) => {
             return(
               // countries
-              <TouchableOpacity style={{  flexDirection: 'row', alignItems: 'center', padding: 20, borderBottomWidth: locations.length -1 === index ? 0 : 0.4, borderBottomColor: 'black'}}>
+              <TouchableOpacity key={location.id} style={{  flexDirection: 'row', alignItems: 'center', padding: 20, borderBottomWidth: locations.length -1 === index ? 0 : 0.4, borderBottomColor: 'black'}} onPress={handleLocationSelect}>
                 <MapIcon size={25} style={{ color: 'black', marginEnd: 10}} />
-                <Text style={{ textAlign: 'center'}}>London, United Kingdom</Text>
+                <Text style={{ textAlign: 'center'}}>{location.name}</Text>
               </TouchableOpacity>
               )
             })}
@@ -74,17 +80,17 @@ function Homescreen() {
           {/* Weather forecast  */}
           <View style={{ justifyContent: 'space-around'}}>
             <Text style={{ fontWeight: 'bold', textAlign: 'center',  fontSize: 36, margin: 15}}>
-              London, 
-              <Text style={{ fontWeight: '400',  fontSize: 24,}}> United Kingdom</Text>
+              {weatherData.name}
+              <Text style={{ fontWeight: '400',  fontSize: 24,}}> {weatherData.sys.country}</Text>
             </Text>
-
+            {/* weather icon */}
             <View style={{ flexDirection: 'row', justifyContent: 'center', paddingVertical: 20}}>
-              <Image source={require('../assets/images/sunwind.png')} style={{ width: 155, height: 155 }}/>
+              <Image source={{ uri: `https://openweathermap.org/img/wn/${weatherData[0].icon}.png`}} style={{ width: 155, height: 155 }}/>
             </View>
 
             <View style={{ marginBottom: 20}}>
-              <Text style={{ textAlign: 'center', fontWeight: 'bold', fontSize: 36, marginBottom: 10}}>23&#176;</Text>
-              <Text style={{ textAlign: 'center', fontWeight: 'bold', fontSize: 18}}>Partly Cloudy</Text>
+              <Text style={{ textAlign: 'center', fontWeight: 'bold', fontSize: 36, marginBottom: 10}}>{weatherData.main.temp}&#176;</Text>
+              <Text style={{ textAlign: 'center', fontWeight: 'bold', fontSize: 18}}>{weatherData.weather[0].description}</Text>
             </View>
             {/* other weather stats */}
             <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginHorizontal: 20}}>
