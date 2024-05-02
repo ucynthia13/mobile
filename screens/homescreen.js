@@ -7,13 +7,34 @@ import { CalendarDaysIcon, MapIcon } from 'react-native-heroicons/solid'
 
 function Homescreen() {
   const [showSearchField, toggleSearchField] = useState(false);
-  const [locations, showLocations ] = useState([1,2,3,4,5,6,7])
+  const [searchQuery, setSearchQuery] = useState('')
+  const [locations, setLocations ] = useState([1])
+  const [weatherData, setWeatherData] = useState(null)
+  const [dailyForecact, setDailyForecast] = useState([])
 
   const API_KEY = 'afbef231da4ffcffc51bcfe0ddab6477'
+
   //fetchweatherdata
   const fetchWeatherData = async (location) => {
-    const url = `https://api.openweathermap.org/data/2.5/weather?q=<span class="math-inline">\{location\}&appid\=</span>{API_KEY}`
+    try{
+      const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${location}&&appid=${API_KEY}`)
+      const data = await response.json()
+      setWeatherData(data)
+    }catch(error){
+      console.error(`Error fetching data : ${error}`)
+    }
 
+  }
+
+  //handlesearch
+  const handleSearch = (query) => {
+    //update search query
+    setSearchQuery(query)
+    //filter
+    const filteredLocations = locations.filter(location => {
+      location.name.toLowerCase().includes(query.toLowerCase())
+    })
+    setLocations(filteredLocations)
   }
   return (
     <View style={{ flex: 1 }}>
@@ -37,7 +58,7 @@ function Homescreen() {
 
         {
           showSearchField && (
-            <View style={{ backgroundColor: 'lightgray', borderRadius: 25, margin: 25}}>
+            <View style={{ backgroundColor: 'lightgray', borderRadius: 25, marginHorizontal: 20}}>
             {locations.map((location, index) => {
             return(
               // countries
@@ -51,7 +72,7 @@ function Homescreen() {
           )}
           {/* Weather forecast  */}
           <View style={{ justifyContent: 'space-around'}}>
-            <Text style={{ fontWeight: 'bold', textAlign: 'center',  fontSize: 36, margin: 10}}>
+            <Text style={{ fontWeight: 'bold', textAlign: 'center',  fontSize: 36, margin: 15}}>
               London, 
               <Text style={{ fontWeight: '400',  fontSize: 24,}}> United Kingdom</Text>
             </Text>
