@@ -1,11 +1,36 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { SafeAreaView, StatusBar, TextInput, Text, TouchableOpacity, View, Image, ScrollView } from 'react-native';
 import { theme } from '../assets/theme/index';
 import { MagnifyingGlassIcon} from 'react-native-heroicons/outline'
 import { CalendarDaysIcon, MapIcon } from 'react-native-heroicons/solid'
 // import fetch from 'node'
+import weatherData from '../weather-data/weatherData.json'
 
 function Homescreen() {
+  const [showSearchField, toggleSearchField] = useState(false)
+  const [locations, setLocations ] = useState([])
+  const [searchQuery, setSearchQuery] = useState('')
+  const [fetchedWeatherData, setFetchedWeatherData] = useState([])
+
+  useEffect(()=> {
+    setLocations(weatherData.map(data => ({name: data.name})))
+  }, [])
+
+  const fetchWeatherData = (location) => {
+    const data = weatherData.filter(item => item.name === location)
+    setFetchedWeatherData(data)
+  }
+
+  const handleSearch = (query) => {
+    setSearchQuery(query)
+    //filter items
+    const filteredLocations = weatherData.filter(location => location.name.toLowerCase().includes(query.toLowerCase()))
+    setLocations(filteredLocations)
+  }
+
+  const handleLocationSelect = (location) => {
+    fetchWeatherData(location.name)
+  }
 
   return (
     <View style={{ flex: 1 }}>
@@ -47,16 +72,16 @@ function Homescreen() {
           <View style={{ justifyContent: 'space-around'}}>
             <Text style={{ fontWeight: 'bold', textAlign: 'center',  fontSize: 36, margin: 15}}>
               {weatherData.name}
-              <Text style={{ fontWeight: '400',  fontSize: 24,}}> {weatherData.sys.country}</Text>
+              <Text style={{ fontWeight: '400',  fontSize: 24,}}> {weatherData.sys}</Text>
             </Text>
             {/* weather icon */}
             <View style={{ flexDirection: 'row', justifyContent: 'center', paddingVertical: 20}}>
-              <Image source={{ uri: `https://openweathermap.org/img/wn/${weatherData[0].icon}.png`}} style={{ width: 155, height: 155 }}/>
+              <Image source={require('../assets/images/sunwind.png')} style={{ width: 155, height: 155 }}/>
             </View>
 
             <View style={{ marginBottom: 20}}>
-              <Text style={{ textAlign: 'center', fontWeight: 'bold', fontSize: 36, marginBottom: 10}}>{weatherData.main.temp}&#176;</Text>
-              <Text style={{ textAlign: 'center', fontWeight: 'bold', fontSize: 18}}>{weatherData.weather[0].description}</Text>
+              <Text style={{ textAlign: 'center', fontWeight: 'bold', fontSize: 36, marginBottom: 10}}>{weatherData.main}&#176;</Text>
+              <Text style={{ textAlign: 'center', fontWeight: 'bold', fontSize: 18}}>{weatherData.description }</Text>
             </View>
             {/* other weather stats */}
             <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginHorizontal: 20}}>
