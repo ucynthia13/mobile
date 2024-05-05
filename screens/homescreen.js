@@ -6,41 +6,7 @@ import { CalendarDaysIcon, MapIcon } from 'react-native-heroicons/solid'
 // import fetch from 'node'
 
 function Homescreen() {
-  const [showSearchField, toggleSearchField] = useState(false);
-  const [searchQuery, setSearchQuery] = useState('')
-  const [locations, setLocations ] = useState([])
-  const [weatherData, setWeatherData] = useState(null)
-  const [dailyForecact, setDailyForecast] = useState([])
 
-  const API_KEY = 'afbef231da4ffcffc51bcfe0ddab6477'
-
-  //fetchweatherdata
-  const fetchWeatherData = async (location) => {
-    try{ 
-      const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${location}&&appid=${API_KEY}`)
-      const data = await response.json()
-      setWeatherData(data)
-    }catch(error){
-      console.error(`Error fetching data : ${error}`)
-    }
-
-  }
-
-  //handlesearch
-  const handleSearch = (query) => {
-    //update search query
-    setSearchQuery(query)
-    //filter
-    const filteredLocations = locations.filter(location => {
-      location.name.toLowerCase().includes(query.toLowerCase())
-    })
-    setLocations(filteredLocations)
-  }
-
-  //function to handle location select
-  const handleLocationSelect =(location)=> {
-    fetchWeatherData(location.name)
-  }
   return (
     <View style={{ flex: 1 }}>
       <StatusBar style='light' />
