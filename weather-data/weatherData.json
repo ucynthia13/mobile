@@ -1,0 +1,33 @@
+[
+    {
+      "name": "New York",
+      "sys": {"country": "US"},
+      "main": {"temp": 20},
+      "weather": [{"description": "Cloudy"}],
+      "wind": {"speed": 22},
+      "humidity": 70,
+      "sunrise": "06:00",
+      "icon": "01d"
+    },
+    {
+      "name": "London",
+      "sys": {"country": "UK"},
+      "main": {"temp": 18},
+      "weather": [{"description": "Rain"}],
+      "wind": {"speed": 15},
+      "humidity": 80,
+      "sunrise": "05:30",
+      "icon": "10d"
+    },
+    {
+      "name": "Tokyo",
+      "sys": {"country": "JP"},
+      "main": {"temp": 25},
+      "weather": [{"description": "Sunny"}],
+      "wind": {"speed": 10},
+      "humidity": 60,
+      "sunrise": "05:45",
+      "icon": "01d"
+    }
+  ]
+  
