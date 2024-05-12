@@ -2,7 +2,7 @@
     {
       "name": "New York",
       "sys": {"country": "US"},
-      "main": 20,
+      "main": {"temp": 20},
       "description": "Cloudy",
       "wind": {"speed": 22},
       "humidity": 70,

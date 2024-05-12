@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { SafeAreaView, StatusBar, TextInput, Text, TouchableOpacity, View, Image, ScrollView } from 'react-native';
-import { theme } from '../assets/theme/index';
 import { MagnifyingGlassIcon} from 'react-native-heroicons/outline'
 import { CalendarDaysIcon, MapIcon } from 'react-native-heroicons/solid'
-// import fetch from 'node'
 import weatherData from '../weather-data/weatherData.json'
 
 function Homescreen() {
@@ -16,16 +14,16 @@ function Homescreen() {
     setLocations(weatherData.map(data => ({name: data.name})))
   }, [])
 
-  const fetchWeatherData = (location) => {
-    const data = weatherData.filter(item => item.name === location)
-    setFetchedWeatherData(data)
-  }
-
-  const handleSearch = (query) => {
+  const handleSearchChange = (query) => {
     setSearchQuery(query)
     //filter items
     const filteredLocations = weatherData.filter(location => location.name.toLowerCase().includes(query.toLowerCase()))
     setLocations(filteredLocations)
+  }
+
+  const fetchWeatherData = (location) => {
+    const data = weatherData.filter(item => item.name === location)
+    setFetchedWeatherData(data)
   }
 
   const handleLocationSelect = (location) => {
@@ -43,7 +41,7 @@ function Homescreen() {
                 placeholder='Search City'
                 placeholderTextColor='black'
                 value={searchQuery}
-                onChangeText={handleSearch}
+                onChangeText={handleSearchChange}
                 style={{ flex: 1, color: 'black', paddingHorizontal: 10 }}
               />
               )}
@@ -57,10 +55,10 @@ function Homescreen() {
         {
           showSearchField && (
             <View style={{ backgroundColor: 'lightgray', borderRadius: 25, marginHorizontal: 20}}>
-            {locations.map((location) => {
+            {locations.map((location, index) => {
             return(
               // countries
-              <TouchableOpacity key={location.id} style={{  flexDirection: 'row', alignItems: 'center', padding: 20, borderBottomWidth: locations.length -1 === index ? 0 : 0.4, borderBottomColor: 'black'}} onPress={handleLocationSelect}>
+              <TouchableOpacity key={location.id} style={{  flexDirection: 'row', alignItems: 'center', padding: 20, borderBottomWidth: locations.length -1 === index ? 0 : 0.4, borderBottomColor: 'black'}} onPress={()=> {handleLocationSelect(location)}}>
                 <MapIcon size={25} style={{ color: 'black', marginEnd: 10}} />
                 <Text style={{ textAlign: 'center'}}>{location.name}</Text>
               </TouchableOpacity>
@@ -68,41 +66,44 @@ function Homescreen() {
             })}
           </View>
           )}
-          {/* Weather forecast  */}
-          <View style={{ justifyContent: 'space-around'}}>
-            <Text style={{ fontWeight: 'bold', textAlign: 'center',  fontSize: 36, margin: 15}}>
-              {weatherData.name}
-              <Text style={{ fontWeight: '400',  fontSize: 24,}}> {weatherData.sys}</Text>
-            </Text>
-            {/* weather icon */}
-            <View style={{ flexDirection: 'row', justifyContent: 'center', paddingVertical: 20}}>
-              <Image source={require('../assets/images/sunwind.png')} style={{ width: 155, height: 155 }}/>
-            </View>
 
-            <View style={{ marginBottom: 20}}>
-              <Text style={{ textAlign: 'center', fontWeight: 'bold', fontSize: 36, marginBottom: 10}}>{weatherData.main}&#176;</Text>
-              <Text style={{ textAlign: 'center', fontWeight: 'bold', fontSize: 18}}>{weatherData.description }</Text>
-            </View>
-            {/* other weather stats */}
-            <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginHorizontal: 20}}>
-
-              <View style={{ flexDirection: 'row', alignItems: 'center', marginHorizontal: 10, marginVertical: 0}}>
-                <Image source={require('../assets/images/wind.png')} style={{ width: 24, height: 24 }}/>
-                <Text style={{ fontSize: 16, fontWeight: 'bold'}}>22km</Text>
+          {fetchedWeatherData.map((data, index) => {
+              <View style={{ justifyContent: 'space-around'}} key={index}>
+              <Text style={{ fontWeight: 'bold', textAlign: 'center',  fontSize: 36, margin: 15}}>
+                {data.name}
+                <Text style={{ fontWeight: '400',  fontSize: 24}}> {data.sys.country}</Text>
+              </Text>
+              {/* weather icon */}
+              <View style={{ flexDirection: 'row', justifyContent: 'center', paddingVertical: 20}}>
+                <Image source={require('../assets/images/sunwind.png')} style={{ width: 155, height: 155 }}/>
               </View>
 
-              <View style={{ flexDirection: 'row', alignItems: 'center', marginEnd: 10}}>
-                <Image source={require('../assets/images/water.png')} style={{ width: 24, height: 24 }}/>
-                <Text style={{ fontSize: 16, fontWeight: 'bold'}}>23%</Text>
+              <View style={{ marginBottom: 20}}>
+                <Text style={{ textAlign: 'center', fontWeight: 'bold', fontSize: 36, marginBottom: 10}}>{data.main.temp}&#176;</Text>
+                <Text style={{ textAlign: 'center', fontWeight: 'bold', fontSize: 18}}>{weatherData.description}</Text>
               </View>
+              {/* other weather stats */}
+              <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginHorizontal: 20}}>
 
-              <View style={{ flexDirection: 'row', alignItems: 'center', marginEnd: 10}}>
-                <Image source={require('../assets/images/sun.png')} style={{ width: 24, height: 24 }}/>
-                <Text style={{ fontSize: 16, fontWeight: 'bold'}}>6:05 AM</Text>
+                <View style={{ flexDirection: 'row', alignItems: 'center', marginHorizontal: 10, marginVertical: 0}}>
+                  <Image source={require('../assets/images/wind.png')} style={{ width: 24, height: 24 }}/>
+                  <Text style={{ fontSize: 16, fontWeight: 'bold'}}>{data.wind.speed}km</Text>
+                </View>
+
+                <View style={{ flexDirection: 'row', alignItems: 'center', marginEnd: 10}}>
+                  <Image source={require('../assets/images/water.png')} style={{ width: 24, height: 24 }}/>
+                  <Text style={{ fontSize: 16, fontWeight: 'bold'}}>{data.humidity}%</Text>
+                </View>
+
+                <View style={{ flexDirection: 'row', alignItems: 'center', marginEnd: 10}}>
+                  <Image source={require('../assets/images/sun.png')} style={{ width: 24, height: 24 }}/>
+                  <Text style={{ fontSize: 16, fontWeight: 'bold'}}>{data.sunrise}AM</Text>
+                </View>
+
               </View>
-
             </View>
-          </View>
+          })}
+
           {/* forecast for tomorrow */}
           <View style={{ margin: 20}}>
             <View style={{ flexDirection: 'row', alignItems: 'center'}}>
