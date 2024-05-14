@@ -1,8 +1,10 @@
 import React, { useState } from 'react'
-import { FlatList, SafeAreaView, TouchableOpacity, View } from 'react-native'
+import {useNavigation} from '@react-navigation/native'
+import { FlatList, SafeAreaView, TouchableOpacity, View, Image, Text } from 'react-native'
 import restaurants from '../restaurants/restaurants.json'
 
 function SearchRestaurant() {
+    const navigation = useNavigation()
     const [restaurantData, setRestaurantData ] = useState(restaurants)
   return (
     <SafeAreaView style={{ flex: 1}}>
@@ -12,7 +14,7 @@ function SearchRestaurant() {
                 showsVerticalScrollIndicator={false}
                 renderItem={({ item }) => (
                     <View>
-                        <TouchableOpacity>
+                        <TouchableOpacity onPress={() => navigation.navigate('ProductDetails', {product: item})}>
                             <Image source={item.image} />
                         </TouchableOpacity>
                         <View>

@@ -4,12 +4,11 @@ import NotificationsScreen from '../screens/notifications'
 import SearchRestaurant from '../screens/searchrestaurant'
 import CartScreen from '../screens/cartscreen'
 import HistoryScreen from '../screens/historyscreen'
-import { Ionicons } from '@expo/vector-icons'
+// import Ionicons from '@react-native-vector-icons/ionicons';
 import { NavigationContainer } from '@react-navigation/native'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
-import Welcomescreen from '../screens/welcomescreen'
 const Tab = createBottomTabNavigator()
-const Welcome = 'Welcome'
+// const Welcome = 'Welcome'
 const Notifications = 'Notifications'
 const SearchRestaurants = 'SearchRestaurants'
 const History = 'History'
@@ -24,13 +23,12 @@ function MainContainer() {
                 let iconName;
                 let routeName = route.name
 
-                if(routeName === Welcome){
-                    iconName = focused ? 'home': 'home-outlined'
-                }else if(routeName === Notifications){
-                    iconName = focused ? 'notifications':'notifications-outlined'
+                if(routeName === Notifications){
+                    iconName = focused ? 'list': 'list-outlined'
                 }
                 else if(routeName === SearchRestaurants){
-                    iconName = focused ? 'list': 'list-outlined'
+                    iconName = focused ? 'notifications':'notifications-outlined'
+
                 }else if(routeName === History){
                     iconName = focused ? 'clock' : 'clock-outlined'
                 }
@@ -38,7 +36,7 @@ function MainContainer() {
                     iconName = focused ? 'cart' : 'cart-outlined'
                 }
                 
-                <Ionicons name='iconName' size={size} color={color}/>
+                // <Ionicons name='iconName' size={size} color={color}/>
             }
         })}
 
@@ -51,7 +49,7 @@ function MainContainer() {
         }}
         >
 
-            <Tab.Screen name={Welcome} component={WelcomeScreen} />
+            {/* <Tab.Screen name={Welcome} component={WelcomeScreen} /> */}
             <Tab.Screen name={Notifications} component={NotificationsScreen} />
             <Tab.Screen name={SearchRestaurants} component={SearchRestaurant} />
             <Tab.Screen name={History} component={HistoryScreen} />
