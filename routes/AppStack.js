@@ -1,22 +1,12 @@
 import React from 'react'
-import SignupScreen from '../screens/signupscreen'
-import LoginScreen from '../screens/loginscreen'
+import Homescreen from '../screens/homescreen'
+import Searchrestaurant from '../screens/searchrestaurant'
 
 function AppStack() {
-    const Stack = createStackNavigator()
-    const defaultOptions = {
-        headerStyle: {
-            backgroundColor: '#eee'
-        },
-        headerTintColor: '#444',
-        headerTitleStyle: {
-            fontWeight: 'bold'
-        }
-    }
   return (
-    <Stack.Navigator screenOptions={defaultOptions}>
-        <Stack.Screen name='Signup' component={SignupScreen} />
-        <Stack.Screen name='login' component={LoginScreen} />
+    <Stack.Navigator>
+        <Stack.Screen name='Home' component={Homescreen} />
+        <Stack.Screen name='Search' component={Searchrestaurant} />
     </Stack.Navigator>
   )
 }

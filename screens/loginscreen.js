@@ -1,4 +1,5 @@
 import React from 'react'
+import { TouchableWithoutFeedback, View, Text, TextInput, TouchableOpacity } from 'react-native'
 
 function LoginScreen() {
   return (

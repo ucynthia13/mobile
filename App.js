@@ -1,12 +1,13 @@
 import React from 'react'
-import AppLoading from 'expo-app-loading'
+import MainContainer from './routes/MainContainer'
+
 
 function App() {
   //load fonts to use 
 
   return (
-    <AppLoading />
-  )
+    <MainContainer />
+    )
 }
 
 export default App

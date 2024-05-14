@@ -1,5 +1,6 @@
 import React from 'react'
-
+import { useNavigation } from '@react-navigation/native';
+import { TouchableWithoutFeedback, View, TextInput, Text, TouchableOpacity } from 'react-native';
 function SignupScreen() {
     //navigation to Login Screen 
     const navigation = useNavigation()
