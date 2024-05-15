@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useNavigation } from '@react-navigation/native';
-import { TouchableWithoutFeedback, View, TextInput, Text, TouchableOpacity } from 'react-native';
+import { TouchableWithoutFeedback, View, Text, TouchableOpacity } from 'react-native';
 import MaterialIcons from '@react-native-vector-icons/material-icons'
 import InputWithIcon from '../components/inputwithicon'
 const initialSignupData = {
