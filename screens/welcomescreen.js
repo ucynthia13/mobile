@@ -1,15 +1,15 @@
-import React from 'react'
+import React from 'react'; 
 import { SafeAreaView, View, Text} from 'react-native'
 
 function WelcomeScreen() {
   return (
-   <SafeAreaView style={{ flex: 1, backgroundColor: 'orange', justifyContent: 'center', alignItems: 'center', display: 'flex'}}>
-    <View style={{ flexDirection: 'row'}}>
-        <Text style={{ fontWeight: 'bold', fontSize: 32, color: 'white'}}>Supa</Text>
-        <Text style={{ fontWeight: 'bold', fontSize: 32}}>Menu</Text>
-    </View>
+    <SafeAreaView className="min-h-screen bg-orange-400 flex justify-center items-center">
+      <View className="flex flex-row">
+        <Text className="font-bold text-white text-2xl">Supa</Text>
+        <Text className="font-bold text-2xl">Menu</Text>
+      </View>
     </SafeAreaView>
-  )
+  );
 }
 
-export default WelcomeScreen
+export default WelcomeScreen;
