@@ -10,6 +10,7 @@ function App() {
 
   return (
     <NavigationContainer>
+      {/* <WelcomeScreen /> */}
       <SignupScreen />
     </NavigationContainer>
     )
