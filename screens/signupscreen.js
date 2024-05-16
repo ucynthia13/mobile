@@ -1,53 +1,87 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
-import { TouchableWithoutFeedback, View, Text, TouchableOpacity } from 'react-native';
-import InputWithIcon from './components/inputwithicon'
+import { TouchableWithoutFeedback, View, Text, TouchableOpacity, TextInput } from 'react-native';
+
 const initialSignupData = {
-    firstName: '',
-    lastName: '',
-    email: '',
-    password: ''
-}
+  firstName: '',
+  lastName: '',
+  email: '',
+  password: ''
+};
+
 function SignupScreen() {
-    //navigation to Login Screen 
-    const navigation = useNavigation()
+  // navigation to Login Screen
+  const navigation = useNavigation();
 
-    const [input, setInput] = useState(initialSignupData)
-    const handleInputChange = (name, text) => {
-        setInput({
-            ...input,
-            [name]: text
-        })
-    }
+  const [input, setInput] = useState(initialSignupData);
+  const handleInputChange = (name, text) => {
+    setInput({
+      ...input,
+      [name]: text
+    });
+  };
 
-    const handleSubmitInput = () => {
-        //Signup data handled
-    }
+  const handleSubmitInput = () => {
+    // Signup data handled
+  };
+
   return (
     <TouchableWithoutFeedback>
-            
-        <View className="flex flex-1 items-center mt-10 px-10 ">
-            <View className="flex-row font-bold">
-                <Text className="text-black">Supa</Text>
-                <Text className="text-black">Menu</Text>
+      <View className="flex flex-1 items-center mt-5 pt-5 px-4">
+        <View>
+            <View className="flex-row">
+                <Text className="text-black font-bold text-5xl">Supa</Text>
+                <Text className="text-black font-bold text-orange text-5xl">Menu</Text>
             </View>
-                <InputWithIcon placeholder="First Name" onChangeText={(text) => handleInputChange('firstName', text)} />
-                <InputWithIcon placeholder="Last Name" onChangeText={(text) => handleInputChange('lastName', text)} />
-                <InputWithIcon placeholder="Email" onChangeText={(text) => handleInputChange('email', text)} />
-                <InputWithIcon placeholder="Password" onChangeText={(text) => handleInputChange('password', text)} secureTextEntry={true} />
-
-                <TouchableOpacity onPress={handleSubmitInput} className="items-center bg-orange-400 w-full p-4 mx-5 border-radius">
-                    <Text className="text-white font-bold">Register</Text>
-                </TouchableOpacity>
-
-                <Text className="py-5">Already have an account?</Text>
-
-                <TouchableOpacity onPress={() => navigation.navigate('LoginScreen')} className="items-center bg-orange-400 w-full p-4 mx-5">
-                    <Text className="text-white font-bold">Login</Text>
-                </TouchableOpacity>
+            <Text className="mt-5 font-bold">Welcome....</Text>
+            <Text className="mt-2 text-gray">Please fill in the information</Text>
         </View>
+        
+        <View className="flex flex-row border border-gray-300 px-4 mb-4 rounded-md">
+          <TextInput
+            placeholder="First Name"
+            onChangeText={(text) => handleInputChange('firstName', text)}
+            className="flex-1 py-2"
+          />
+        </View>
+        
+        <View className="flex flex-row border border-gray-300 px-4 mb-4 rounded-md">
+          <TextInput
+            placeholder="Last Name"
+            onChangeText={(text) => handleInputChange('lastName', text)}
+            className="flex-1 py-2"
+          />
+        </View>
+        
+        <View className="flex flex-row border border-gray-300 px-4 mb-4 rounded-md">
+          <TextInput
+            placeholder="Email"
+            onChangeText={(text) => handleInputChange('email', text)}
+            className="flex-1 py-2"
+          />
+        </View>
+        
+        <View className="flex flex-row border border-gray-300 px-4 mb-4 rounded-md">
+          <TextInput
+            placeholder="Password"
+            onChangeText={(text) => handleInputChange('password', text)}
+            secureTextEntry={true}
+            className="flex-1 py-2"
+          />
+        </View>
+
+        <TouchableOpacity onPress={handleSubmitInput} className="items-center bg-orange-400 w-full p-4 mx-3 border-radius">
+          <Text className="text-white font-bold">Register</Text>
+        </TouchableOpacity>
+
+        <Text className="py-5">Already have an account?</Text>
+
+        <TouchableOpacity onPress={() => navigation.navigate('LoginScreen')} className="items-center bg-orange-400 w-full p-4 mx-3">
+          <Text className="text-white font-bold">Login</Text>
+        </TouchableOpacity>
+      </View>
     </TouchableWithoutFeedback>
-  )
+  );
 }
 
-export default SignupScreen
+export default SignupScreen;
