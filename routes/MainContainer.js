@@ -8,7 +8,7 @@ import HistoryScreen from '../screens/historyscreen'
 import { NavigationContainer } from '@react-navigation/native'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 const Tab = createBottomTabNavigator()
-// const Welcome = 'Welcome'
+const Welcome = 'Welcome'
 const Notifications = 'Notifications'
 const SearchRestaurants = 'SearchRestaurants'
 const History = 'History'
@@ -23,7 +23,9 @@ function MainContainer() {
                 let iconName;
                 let routeName = route.name
 
-                if(routeName === Notifications){
+                if(routeName === Welcome){
+                    iconName = focused ? 'home' : 'home-outlined'
+                }else if(routeName === Notifications){
                     iconName = focused ? 'list': 'list-outlined'
                 }
                 else if(routeName === SearchRestaurants){
