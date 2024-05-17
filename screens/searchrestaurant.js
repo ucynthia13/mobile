@@ -1,47 +1,72 @@
-import React, { useState } from 'react'
-import { SafeAreaView, View, TextInput, TouchableOpacity,  Text, FlatList} from 'react-native'
-import restaurantData from '../restaurants/restaurants.json'
-import { ChevronLeftIcon } from 'react-native-heroicons/outline'
+import React, { useEffect, useState } from 'react';
+import { SafeAreaView, StatusBar, TextInput, Text, TouchableOpacity, View, Image, ScrollView, FlatList } from 'react-native';
+import { ChevronLeftIcon, MagnifyingGlassIcon} from 'react-native-heroicons/outline'
+import restaurantData from '../restaurants/restaurants.js'
+import { useNavigation } from '@react-navigation/native';
 
 function SearchRestaurant() {
-const [showSearchField, toggleSearchField] = useState(false)
-const [searchQuery, setSearchQuery] =useState('')
+  const navigation = useNavigation()
+  const [showSearchField, toggleSearchField] = useState(true)
+  const [restaurants, setRestaurants ] = useState([])
+  const [searchQuery, setSearchQuery] = useState('')
 
-const handleSearchChange = (text) => {
-    setSearchQuery(text)
-}
+  useEffect(()=> {
+    setRestaurants(restaurantData)
+  }, [])
+
+  const handleSearchChange = (query) => {
+    setSearchQuery(query)
+    //filter items
+  }
   return (
-<SafeAreaView>
-    <View className="flex-1">
-        <View className="border">
-            {/* Search field */}
-            <View className="flex flex-row rounded-lg border-gray-300 bg-gray-300 py-3">
-                <TextInput placeholder='Search Restaurant' value={searchQuery} onChange={handleSearchChange} className="flex flex-1 text-black" />
+    <View className="flex flex-1">
+      <StatusBar style='light' />
+      <SafeAreaView className="">
 
-                <TouchableOpacity onPress={() => toggleSearchField(!showSearchField) }>
-                    <ChevronLeftIcon size={24} color="black" /> 
-                </TouchableOpacity>
-            </View>   
+        <View className="flex-row items-center py-2 border-b-1 ">
+              <TouchableOpacity onPress={() => toggleSearchField(!showSearchField)} className="rounded-1xl bg-gray-200 p-1 mt-2 mx-4 ">
+                <ChevronLeftIcon color="orange" size={25} />
+              </TouchableOpacity>
+            <View className="flex-row items-center border-radius-1 py-3">
+            {showSearchField && (
+              <TextInput
+                placeholder='Search...'
+                placeholderTextColor='gray'
+                value={searchQuery}
+                onChangeText={handleSearchChange}
+                className="flex flex-1 text-black px-3 font-bold"
+              />
+              )}
+            </View>
         </View>
 
         <FlatList 
-            data={restaurantData}
-            showsVerticalScrollIndicator={false}
-            renderItem={({ item }) => (
+        data={restaurants}
+        keyExtractor={(item) => item.id}
+        showsVerticalScrollIndicator={false}
+        renderItem={({ item}) => (
+            <TouchableOpacity className="mx-4" onPress={() => navigation.navigate('ProductDetails', {product: item})}>
+            <View className="flex-1 flex-row bg-gray-200 mt-3 p-3 rounded-2xl">
                 <View>
-                    <TouchableOpacity onPress={() => navigation.navigate('ProductDetails', {product: item})}>
-                        <Image source={item.image} />
-                    </TouchableOpacity>
-                    <View>
-                        <Text>{item.location}</Text>
-                        <Text>{item.type}, {item.dish}</Text>
+                    <Image source={item.image} className="w-16 h-16 rounded-2xl "/>
+                </View>
+                <View className="rounded-2xl px-4">
+                    <Text className="text-gray-500 font-bold my-2">{item.name}</Text>
+                    <View className="flex flex-row">
+                        <Text className="text-gray-500">{item.location}, </Text>
+                        <Text className="text-gray-600">{item.dish}</Text>
                     </View>
                 </View>
-            )}
+
+            </View>
+          </TouchableOpacity>  
+        )}
+        
         />
+
+      </SafeAreaView>
     </View>
-</SafeAreaView>
-  )
+  );
 }
 
-export default SearchRestaurant
+export default SearchRestaurant;
