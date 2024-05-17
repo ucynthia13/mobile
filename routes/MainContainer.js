@@ -1,5 +1,5 @@
 import React from 'react'
-import WelcomeScreen from '../screens/welcomescreen'
+
 import NotificationsScreen from '../screens/notifications'
 import SearchRestaurant from '../screens/searchrestaurant'
 import CartScreen from '../screens/cartscreen'
@@ -9,7 +9,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 const Tab = createBottomTabNavigator()
 const Welcome = 'Welcome'
 const Notifications = 'Notifications'
-const SearchRestaurants = 'SearchRestaurants'
+const Restaurants = 'Restaurants'
 const History = 'History'
 const Cart = 'Cart'
 
@@ -17,7 +17,7 @@ function MainContainer() {
 
   return (
     <NavigationContainer>
-        <Tab.Navigator initialRouteName={SearchRestaurants} screenOptions={({ route })=> ({
+        <Tab.Navigator initialRouteName={Restaurants} screenOptions={({ route })=> ({
             tabBarIcon: ({ focused, color, size}) => {
                 let iconName;
                 let routeName = route.name
@@ -27,7 +27,7 @@ function MainContainer() {
                 }else if(routeName === Notifications){
                     iconName = focused ? 'list': 'list-outlined'
                 }
-                else if(routeName === SearchRestaurants){
+                else if(routeName === Restaurants){
                     iconName = focused ? 'notifications':'notifications-outlined'
 
                 }else if(routeName === History){
@@ -50,9 +50,8 @@ function MainContainer() {
         }}
         >
 
-            {/* <Tab.Screen name={Welcome} component={WelcomeScreen} /> */}
+            <Tab.Screen name={Restaurants} component={SearchRestaurant} />
             <Tab.Screen name={Notifications} component={NotificationsScreen} />
-            <Tab.Screen name={SearchRestaurants} component={SearchRestaurant} />
             <Tab.Screen name={History} component={HistoryScreen} />
             <Tab.Screen name={Cart} component={CartScreen} />
 
