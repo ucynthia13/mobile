@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { SafeAreaView, View, TextInput, TouchableOpacity,  Text, FlatList} from 'react-native'
 import restaurantData from '../restaurants/restaurants.json'
+import { ChevronLeftIcon } from 'react-native-heroicons/outline'
 
 function SearchRestaurant() {
 const [showSearchField, toggleSearchField] = useState(false)
@@ -18,7 +19,7 @@ const handleSearchChange = (text) => {
                 <TextInput placeholder='Search Restaurant' value={searchQuery} onChange={handleSearchChange} className="flex flex-1 text-black" />
 
                 <TouchableOpacity onPress={() => toggleSearchField(!showSearchField) }>
-                    <OutlineChevronLeftIcon size={24} color="black" /> 
+                    <ChevronLeftIcon size={24} color="black" /> 
                 </TouchableOpacity>
             </View>   
         </View>
