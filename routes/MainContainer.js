@@ -4,7 +4,6 @@ import NotificationsScreen from '../screens/notifications'
 import SearchRestaurant from '../screens/searchrestaurant'
 import CartScreen from '../screens/cartscreen'
 import HistoryScreen from '../screens/historyscreen'
-// import Ionicons from '@react-native-vector-icons/ionicons';
 import { NavigationContainer } from '@react-navigation/native'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 const Tab = createBottomTabNavigator()
