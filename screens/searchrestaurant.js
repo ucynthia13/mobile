@@ -19,12 +19,10 @@ function SearchRestaurant() {
     //filter items
   }
   return (
-    <View className="flex flex-1">
-      <StatusBar style='light' />
-      <SafeAreaView className="">
+      <SafeAreaView className="flex flex-1">
 
         <View className="flex-row items-center py-2 border-b-1 ">
-              <TouchableOpacity onPress={() => toggleSearchField(!showSearchField)} className="rounded-1xl bg-gray-200 p-1 mt-2 mx-4 ">
+              <TouchableOpacity onPress={() => toggleSearchField(!showSearchField)} className="rounded-2xl bg-gray-200 p-1 mt-2 mx-4 ">
                 <ChevronLeftIcon color="orange" size={25} />
               </TouchableOpacity>
             <View className="flex-row items-center border-radius-1 py-3">
@@ -65,7 +63,6 @@ function SearchRestaurant() {
         />
 
       </SafeAreaView>
-    </View>
   );
 }
 
