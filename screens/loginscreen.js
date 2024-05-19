@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
-import { TouchableWithoutFeedback, View, Text, TouchableOpacity, TextInput } from 'react-native';
+import { TouchableWithoutFeedback, View, Text, TouchableOpacity, TextInput, Image } from 'react-native';
+import fb from '../assets/images/login/fb.png'
+import google from '../assets/images/login/google.png'
 
 const initialLoginData = {
   email: '',
@@ -60,17 +62,19 @@ function LoginScreen() {
 
             <Text className="pt-3 pb-4 text-gray-500 font-bold">OR</Text>
 
-            <TouchableOpacity onPress={() => navigation.navigate('LoginScreen')} className="items-center border border-gray-200 w-full p-5 mx-3 mb-3 rounded-md">
-                <Text className="text-gray-400 font-bold">Login with Google</Text>
+            <TouchableOpacity onPress={() => navigation.navigate('LoginScreen')} className="flex-row items-center justify-center border border-gray-200 w-full p-5 mx-3 mb-3 rounded-md">
+                <Image source={google} className="w-5 h-5" />
+                <Text className="text-gray-400 font-bold px-2">Login with Google</Text>
             </TouchableOpacity>
 
-            <TouchableOpacity onPress={() => navigation.navigate('LoginScreen')} className="items-center border border-gray-200 w-full p-5 mx-3 rounded-md">
+            <TouchableOpacity onPress={() => navigation.navigate('LoginScreen')} className="flex-row items-center justify-center border border-gray-200 w-full p-4 mx-3 rounded-md">
+                <Image source={fb} className="w-9 h-9" />
                 <Text className="text-gray-400 font-bold">Login with Facebook</Text>
             </TouchableOpacity>
 
             <Text className="mt-4 text-orange-400 font-bold">Forgot Password?</Text>
 
-            <View className="flex-row mt-2 mb-3">    
+            <View className="flex-row mt-2 mb-4">    
                 <Text className=" text-gray-400"> Don't have an account? </Text>
                 <Text className="text-orange-400 font-bold"> Register</Text>
             </View>

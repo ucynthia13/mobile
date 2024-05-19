@@ -19,10 +19,10 @@ function SearchRestaurant() {
     //filter items
   }
   return (
-      <SafeAreaView className="flex flex-1">
+      <SafeAreaView className="flex flex-1 pt-4">
 
         <View className="flex-row items-center py-2 border-b-1 ">
-              <TouchableOpacity onPress={() => toggleSearchField(!showSearchField)} className="rounded-2xl bg-gray-200 p-1 mt-2 mx-4 ">
+              <TouchableOpacity onPress={() => navigation.navigate('SignupScreen')} className="rounded-2xl bg-gray-200 p-1 mt-2 mx-4 ">
                 <ChevronLeftIcon color="orange" size={25} />
               </TouchableOpacity>
             <View className="flex-row items-center border-radius-1 py-3">

@@ -19,7 +19,7 @@ function CheckoutScreen({ route }) {
   )
 
   return (
-    <SafeAreaView className="flex flex-1 px-4">
+    <SafeAreaView className="flex flex-1 px-4 pt-4">
       <View className="shadow-lg shadow-green-500/50 rounded-4xl pt-4 px-4">
         <TouchableOpacity className="mt-2 w-10" onPress={() => navigation.navigate('SearchRestaurants')}>
           <ChevronLeftIcon color="green" size={25} />
