@@ -7,7 +7,9 @@ function WelcomeScreen() {
   const navigation = useNavigation()
   return (
     <SafeAreaView className="min-h-screen bg-orange-400 flex justify-center items-center">
-      <Title primary={true}/>
+      <TouchableOpacity onPress={() => navigation.navigate('SignupScreen')}>
+        <Title primary={true}/>
+      </TouchableOpacity>
     </SafeAreaView>
   );
 }

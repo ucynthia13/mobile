@@ -21,8 +21,22 @@ function SignupScreen() {
     });
   };
 
-  const handleSubmitInput = () => {
-    // Signup data handled
+  const handleSubmitInput = async() => {
+    try {
+      const response = await fetch('http://localhost:8080/api/customer/register', {
+        method: 'POST', 
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(initialSignupData)
+      })
+
+      if(response.ok){
+          console.log(`Customer Successfully Registered ${await response.json()}`)
+      }else{
+        console.log(`Customer not registered ${response.status}`)
+      }
+    } catch (error) {
+      consolr.error(`Error:${error}`)
+    }
   };
 
   return (
