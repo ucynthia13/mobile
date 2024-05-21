@@ -8,6 +8,7 @@ import NotificationsScreen from '../screens/notifications';
 import RatingsScreen from '../screens/ratingsscreen';
 import LoginScreen from '../screens/loginscreen'
 import SignupScreen from '../screens/signupscreen'
+import WelcomeScreen from '../screens/welcomescreen';
 const Stack = createStackNavigator();
 
 function RootStackNavigator(){
@@ -21,9 +22,11 @@ function RootStackNavigator(){
                 <Stack.Screen name='RatingsScreen' component={RatingsScreen} options={{ headerShown: false}} />
                 <Stack.Screen name='SignupScreen' component={SignupScreen} options={{ headerShown: false}} />
                 <Stack.Screen name='LoginScreen' component={LoginScreen} options={{ headerShown: false}} />
+                <Stack.Screen name='WelcomeScreen' component={WelcomeScreen} options={{ headerShown: false}} />
             </Stack.Navigator>
     )
 }
 
 
 export default RootStackNavigator
+
