@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
-import { TouchableWithoutFeedback, View, Text, TouchableOpacity, TextInput, Image } from 'react-native';
+import { Alert, TouchableWithoutFeedback, View, Text, TouchableOpacity, TextInput, Image } from 'react-native';
 import fb from '../assets/images/login/fb.png'
 import google from '../assets/images/login/google.png'
 
@@ -13,16 +13,36 @@ function LoginScreen() {
   // navigation to Login Screen
   const navigation = useNavigation();
 
-  const [input, setInput] = useState(initialLoginData);
+  const [loginData, setLoginData] = useState(initialLoginData);
   const handleInputChange = (name, text) => {
-    setInput({
-      ...input,
+    setLoginData({
+      ...loginData,
       [name]: text
     });
   };
 
-  const handleSubmitInput = () => {
+  const handleSubmitInput = async() => {
     // Signup data handled
+    try {
+      const response = await fetch('http://10.5.220.37:1024/api/user/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type':'application/json'
+        },
+        body: JSON.stringify(loginData)
+      })
+      const data = await response.json()
+      if(response.ok){
+        console.log(`Token: ${data.token}`)
+        Alert.alert('SUCCESS!!', 'Proceed to restaurants...', [
+          {text: 'EXPLORE', onPress: () => navigation.navigate('SearchRestaurants')}
+        ])
+      }else{
+        console.log(`Failed Logging in: ${data.message}`)
+      }
+    } catch (error) {
+      console.log(`Error logging in: ${error.message}`)
+    }
   };
 
   return (

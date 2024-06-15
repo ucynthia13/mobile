@@ -9,11 +9,15 @@ import RatingsScreen from '../screens/ratingsscreen';
 import LoginScreen from '../screens/loginscreen'
 import SignupScreen from '../screens/signupscreen'
 import WelcomeScreen from '../screens/welcomescreen';
+import TokenGenerator from '../screens/tokengenerator';
+import TokenValidator from '../screens/tokenvalidator';
 const Stack = createStackNavigator();
 
 function RootStackNavigator(){
     return(
             <Stack.Navigator>
+                <Stack.Screen name='TokenGenerator' component={TokenGenerator} options={{ headerShown: false}} />
+                <Stack.Screen name='TokenValidator' component={TokenValidator} options={{ headerShown: false}} />
                 <Stack.Screen name='MainTabs' component={RootTabNavigator} options={{ headerShown: false}} />
                 <Stack.Screen name='ProductDetails' component={ProductDetails} options={{ headerShown: false}} />
                 <Stack.Screen name='SearchRestaurants' component={SearchRestaurant} options={{ headerShown: false}} />
