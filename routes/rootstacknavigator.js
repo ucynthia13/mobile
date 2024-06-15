@@ -9,6 +9,7 @@ import RatingsScreen from '../screens/ratingsscreen';
 import LoginScreen from '../screens/loginscreen'
 import SignupScreen from '../screens/signupscreen'
 import TokenGenerator from '../screens/tokengenerator';
+import WelcomeScreen from '../screens/welcomescreen'
 import TokenValidator from '../screens/tokenvalidator';
 const Stack = createStackNavigator();
 
