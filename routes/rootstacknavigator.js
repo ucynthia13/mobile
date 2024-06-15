@@ -8,9 +8,6 @@ import NotificationsScreen from '../screens/notifications';
 import RatingsScreen from '../screens/ratingsscreen';
 import LoginScreen from '../screens/loginscreen'
 import SignupScreen from '../screens/signupscreen'
-import WelcomeScreen from '../screens/welcomescreen';
-import TokenGenerator from '../screens/tokengenerator';
-import TokenValidator from '../screens/tokenvalidator';
 const Stack = createStackNavigator();
 
 function RootStackNavigator(){
