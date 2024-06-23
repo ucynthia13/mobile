@@ -23,26 +23,6 @@ const loginUser = async(req, res) => {
     }
 }
 
-const purchasePower = async(req, res) => {
-  try {
-    const { money, metern} = req.body
-    const response = await userservice.buyPower(money, metern)
-    res.status(response.status).json({message: response.message, token: response.uniqueToken})
-  } catch (error) {
-    res.status(500).json({message: error.message})
-  }
-}
-
-const validateUserToken = async(req, res) => {
-  try {
-    const { token } = req.body
-    const response = userservice.validateToken(token)
-    res.status(response.status).json({message: response.message})
-  } catch (error) {
-    res.status(500).json({message: error.message})
-  }
-}
-
 
 const retrieveUsers = async(req, res) => {
     try {
@@ -93,6 +73,7 @@ const updateUser = async (req, res) => {
       res.status(500).json({ message: error.message });
     }
   };
+  
 
   module.exports = {
     registerUser, 
@@ -102,5 +83,6 @@ const updateUser = async (req, res) => {
     getUser,
     retrieveUsers,
     updateUser,
-    deleteUser
+    deleteUser,
+    verifyToken
   }

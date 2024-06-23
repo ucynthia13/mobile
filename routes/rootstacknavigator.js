@@ -8,25 +8,23 @@ import NotificationsScreen from '../screens/notifications';
 import RatingsScreen from '../screens/ratingsscreen';
 import LoginScreen from '../screens/loginscreen'
 import SignupScreen from '../screens/signupscreen'
-import TokenGenerator from '../screens/tokengenerator';
 import WelcomeScreen from '../screens/welcomescreen'
-import TokenValidator from '../screens/tokenvalidator';
 const Stack = createStackNavigator();
 
 function RootStackNavigator(){
     return(
             <Stack.Navigator>
-                <Stack.Screen name='TokenGenerator' component={TokenGenerator} options={{ headerShown: false}} />
-                <Stack.Screen name='TokenValidator' component={TokenValidator} options={{ headerShown: false}} />
+                {/* <Stack.Screen name='TokenGenerator' component={TokenGenerator} options={{ headerShown: false}} />
+                <Stack.Screen name='TokenValidator' component={TokenValidator} options={{ headerShown: false}} /> */}
+                <Stack.Screen name='SignupScreen' component={SignupScreen} options={{ headerShown: false}} />
+                <Stack.Screen name='LoginScreen' component={LoginScreen} options={{ headerShown: false}} />
+                <Stack.Screen name='WelcomeScreen' component={WelcomeScreen} options={{ headerShown: false}} />
                 <Stack.Screen name='MainTabs' component={RootTabNavigator} options={{ headerShown: false}} />
                 <Stack.Screen name='ProductDetails' component={ProductDetails} options={{ headerShown: false}} />
                 <Stack.Screen name='SearchRestaurants' component={SearchRestaurant} options={{ headerShown: false}} />
                 <Stack.Screen name='CheckoutScreen' component={CheckoutScreen} options={{ headerShown: false}} />
                 <Stack.Screen name='NotificationsScreen' component={NotificationsScreen} options={{ headerShown: false}} />
                 <Stack.Screen name='RatingsScreen' component={RatingsScreen} options={{ headerShown: false}} />
-                <Stack.Screen name='SignupScreen' component={SignupScreen} options={{ headerShown: false}} />
-                <Stack.Screen name='LoginScreen' component={LoginScreen} options={{ headerShown: false}} />
-                <Stack.Screen name='WelcomeScreen' component={WelcomeScreen} options={{ headerShown: false}} />
             </Stack.Navigator>
     )
 }

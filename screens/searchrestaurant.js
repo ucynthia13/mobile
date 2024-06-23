@@ -10,7 +10,7 @@ function SearchRestaurant() {
   const [restaurants, setRestaurants ] = useState([])
   const [searchQuery, setSearchQuery] = useState('')
 
-  useEffect(()=> {
+  useEffect(async ()=> {
     setRestaurants(restaurantData)
   }, [])
 

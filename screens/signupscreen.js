@@ -21,6 +21,28 @@
     };
 
     const handleSubmitInput = async() => {
+      const { firstName, email, password } = signupData
+
+      const nameRegex = /^[A-Za-z]{2,}$/;
+      if (!nameRegex.test(firstName)) {
+        Alert.alert("Error", "First name must contain only letters and be at least 2 characters long");
+        return;
+      }
+
+      // Email format validation
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email)) {
+        Alert.alert("Error", "Please enter a valid email address");
+        return;
+      }
+
+      // Password strength validation (minimum 8 characters, at least one letter and one number)
+      const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d@$!%*?&]{8,}$/;
+      if (!passwordRegex.test(password)) {
+        Alert.alert("Error", "Password must be at least 8 characters long and contain at least one letter and one number");
+        return;
+      }
+
       try {
         const response = await fetch('http://10.5.220.37:1024/api/user/signup', {
           method: 'POST', 
@@ -30,8 +52,8 @@
 
         if(response.ok){
             console.log(`Customer Successfully Registered ${await response.json()}`)
-            Alert.alert('SUCCESS!!', 'Proceed to Restaurants...', [
-              {text: 'EXPLORE', onPress: () => navigation.navigate('SearchRestaurants')}
+            Alert.alert('SUCCESS!!', 'Proceed to Login...', [
+              {text: 'EXPLORE', onPress: () => navigation.navigate('LoginScreen')}
             ])
         }else{
           console.log(`Customer not registered ${response.status}`)

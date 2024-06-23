@@ -31,7 +31,7 @@ const authenticateUser = async(email, password) => {
             }else{
                 //generate token
                 console.log(retrievedUser.id)
-                const token = jwt.sign({ id: retrievedUser.id, email: retrievedUser.email , role: retrievedUser.role}, SECRET, { expiresIn: '1h' });
+                const token = jwt.sign({ id: retrievedUser.id, email: retrievedUser.email}, SECRET, { expiresIn: '1h' });
                 //refresh token
                 // const refreshToken = jwt.sign({  id: retrievedUser.getUserById}, {email: retrievedUser.email}, SECRET, {expiresIn: '7d'})
     
@@ -44,38 +44,6 @@ const authenticateUser = async(email, password) => {
     }
 }
 
-const buyPower = async(money, metern) => {
-  try {
-    const generate8DigitToken = () => {
-      return Math.floor(10000000 + Math.random() * 90000000).toString()
-    }
-    const days= money/100
-    const uniqueToken = generate8DigitToken()
-    const payload = {
-      money,
-      metern,
-      days, 
-      uniqueToken
-    }
-    purchaseToken = jwt.sign(payload, SECRET, {expiresIn: '30d'})
-    return { status: 200, message: `Token Provided Successfully`, uniqueToken}
-  } catch (error) {
-    throw new Error(`Error providing token: ${error}`)
-  }
-}
-
-const validateToken = (uniqueToken) => {
-  try {
-    const decoded = jwt.verify(purchaseToken, SECRET)
-    if (decoded.uniqueToken === uniqueToken) {
-      return { status: 200, message: `Token is valid. Amount: ${decoded.money}, Days: ${decoded.days}`}
-    } else {
-      return { status: 401, message: `Invalid Token: ${uniqueToken}`}
-    }
-  } catch (error) {
-    throw new Error(`Error validating token: ${error}`)
-  }
-}
 
 const getAllUsers = async () => {
   try {
@@ -130,6 +98,15 @@ const deleteUser = async (id) => {
   }
 };
 
+const verifyToken = async(token) => {
+  try {
+    const decoded = jwt.verify(token, SECRET)
+      return { valid: true, decoded}
+  } catch (error) {
+    return { valid: false, message: error.message   }
+  }
+}
+
 module.exports = {
   createUser,
   authenticateUser,
@@ -139,4 +116,5 @@ module.exports = {
   getUserById,
   updateUser,
   deleteUser,
+  verifyToken
 };
